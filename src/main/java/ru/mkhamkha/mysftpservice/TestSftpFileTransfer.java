@@ -26,6 +26,10 @@ public class TestSftpFileTransfer implements CommandLineRunner {
         logger.info("Start download file");
         boolean isDownloaded = fileTransferService.downloadFile("src/main/resources/file/data.txt", "upload/data.txt");
         logger.info("Download result: " + String.valueOf(isDownloaded));
+
+        logger.info("Start deleted file");
+        boolean isDeleted = fileTransferService.deletedFile("upload/", "data.txt");
+        logger.info("Delete result: " + String.valueOf(isDeleted));
     }
 
 }

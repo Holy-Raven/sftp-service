@@ -5,4 +5,5 @@ public interface FileTransferService {
 
     boolean downloadFile(String localFilePath, String remoteFilePath);
 
+    boolean deletedFile(String directory, String targetPath);
 }

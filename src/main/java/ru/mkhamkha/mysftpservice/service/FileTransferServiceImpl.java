@@ -74,6 +74,22 @@ public class FileTransferServiceImpl implements FileTransferService {
         return false;
     }
 
+    @Override
+    public boolean deletedFile(String directory, String targetPath) {
+
+        ChannelSftp channelSftp = createChannelSftp();
+        try {
+            channelSftp.cd(directory);
+            channelSftp.rm(targetPath);
+            return true;
+        } catch(Exception ex) {
+            logger.error("Error deleted file", ex);
+            return false;
+        } finally {
+            disconnectChannelSftp(channelSftp);
+        }
+    }
+
     private ChannelSftp createChannelSftp() {
         try {
             JSch jSch = new JSch();
